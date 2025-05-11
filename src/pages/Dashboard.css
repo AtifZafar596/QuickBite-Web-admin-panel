@@ -1,0 +1,168 @@
+.dashboard-page {
+  padding: 32px;
+  background: linear-gradient(120deg, #fff 60%, #ffe5e8 100%);
+  min-height: 100vh;
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+}
+
+.dashboard-page h1 {
+  color: #EF2A39;
+  font-size: 2.4rem;
+  margin-bottom: 36px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, #EF2A39 60%, #ffb3bb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dashboard-metrics {
+  display: flex;
+  gap: 28px;
+  margin-bottom: 44px;
+  flex-wrap: wrap;
+}
+
+.metric-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(239,42,57,0.08), 0 1.5px 4px rgba(239,42,57,0.07);
+  padding: 32px 36px 28px 28px;
+  display: flex;
+  align-items: center;
+  min-width: 240px;
+  flex: 1 1 240px;
+  border-left: 7px solid #EF2A39;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.metric-card.orders { border-left-color: #EF2A39; }
+.metric-card.revenue { border-left-color: #ffb300; }
+.metric-card.customers { border-left-color: #17a2b8; }
+.metric-card.stores { border-left-color: #28a745; }
+
+.metric-card:hover {
+  box-shadow: 0 8px 32px rgba(239,42,57,0.16), 0 2px 8px rgba(239,42,57,0.10);
+  transform: translateY(-2px) scale(1.02);
+}
+
+.metric-icon {
+  font-size: 2.5rem;
+  margin-right: 22px;
+  color: #EF2A39;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffe5e8;
+  border-radius: 50%;
+  width: 54px;
+  height: 54px;
+  box-shadow: 0 2px 8px rgba(239,42,57,0.08);
+}
+
+.metric-card.revenue .metric-icon {
+  color: #ffb300;
+  background: #fff7e0;
+}
+.metric-card.customers .metric-icon {
+  color: #17a2b8;
+  background: #e0f7fa;
+}
+.metric-card.stores .metric-icon {
+  color: #28a745;
+  background: #e6f9ed;
+}
+
+.metric-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.metric-value {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #222;
+  letter-spacing: 0.5px;
+}
+
+.metric-label {
+  font-size: 1.1rem;
+  color: #EF2A39;
+  margin-top: 4px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.dashboard-section {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(239,42,57,0.07);
+  padding: 32px 36px;
+  margin-bottom: 32px;
+}
+
+.dashboard-section h2 {
+  margin-top: 0;
+  color: #EF2A39;
+  font-size: 1.4rem;
+  margin-bottom: 18px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.recent-orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 10px;
+  font-size: 1.05rem;
+}
+
+.recent-orders-table th,
+.recent-orders-table td {
+  padding: 13px 18px;
+  text-align: left;
+  border-bottom: 1px solid #f3c2c7;
+}
+
+.recent-orders-table th {
+  background-color: #ffe5e8;
+  font-weight: 700;
+  color: #EF2A39;
+  letter-spacing: 0.2px;
+}
+
+.recent-orders-table tr:last-child td {
+  border-bottom: none;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 12px;
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #fff;
+  text-transform: capitalize;
+  letter-spacing: 0.2px;
+  box-shadow: 0 1px 4px rgba(239,42,57,0.08);
+}
+.status-badge.pending { background: #ffc107; color: #222; }
+.status-badge.confirmed { background: #17a2b8; }
+.status-badge.preparing { background: #007bff; }
+.status-badge.ready { background: #28a745; }
+.status-badge.delivered { background: #6c757d; }
+.status-badge.cancelled { background: #dc3545; }
+
+.loading {
+  text-align: center;
+  padding: 30px;
+  color: #EF2A39;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+} 
