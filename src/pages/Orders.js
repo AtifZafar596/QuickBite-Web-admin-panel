@@ -106,7 +106,7 @@ const Orders = () => {
               {orders.map((order) => (
                 <tr key={order.id}>
                   <td>#{order.id}</td>
-                  <td>{order.user?.name || order.users?.name || 'N/A'}</td>
+                  <td>{ order.users?.full_name || 'N/A'}</td>
                   <td>{order.store?.name || order.stores?.name || order.stores?.[0]?.name || 'N/A'}</td>
                   <td>${order.total_amount?.toFixed(2) || '0.00'}</td>
                   <td>
