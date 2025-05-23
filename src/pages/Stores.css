@@ -137,4 +137,24 @@
   background-color: #f8d7da;
   border-radius: 4px;
   margin: 20px 0;
+}
+
+.category-select {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 100%;
+  background-color: white;
+  cursor: pointer;
+}
+
+.category-select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.category-select option {
+  padding: 8px;
 } 

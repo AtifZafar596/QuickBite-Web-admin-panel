@@ -61,7 +61,7 @@ const Dashboard = () => {
             <div className="metric-card revenue">
               <div className="metric-icon"><i className="fas fa-dollar-sign"></i></div>
               <div className="metric-info">
-                <div className="metric-value">dzd{metrics.totalRevenue.toLocaleString(undefined, {minimumFractionDigits: 2})}</div>
+                <div className="metric-value">AED{metrics.totalRevenue.toLocaleString(undefined, {minimumFractionDigits: 2})}</div>
                 <div className="metric-label">Total Revenue</div>
               </div>
             </div>
@@ -101,7 +101,7 @@ const Dashboard = () => {
                     <td>#{order.id}</td>
                     <td>{order.user?.name || order.users?.name || 'N/A'}</td>
                     <td>{order.store?.name || order.stores?.name || order.stores?.[0]?.name || 'N/A'}</td>
-                    <td>dzd{order.total_amount?.toFixed(2) || '0.00'}</td>
+                    <td>AED{order.total_amount?.toFixed(2) || '0.00'}</td>
                     <td><span className={`status-badge ${order.status}`}>{order.status}</span></td>
                     <td>{order.created_at ? new Date(order.created_at).toLocaleString() : 'N/A'}</td>
                   </tr>

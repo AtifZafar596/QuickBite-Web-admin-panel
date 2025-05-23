@@ -47,16 +47,16 @@ const Orders = () => {
     }
   };
 
-  const handleViewDetails = async (orderId) => {
-    try {
-      const orderDetails = await ordersApi.getById(orderId);
-      setSelectedOrder(orderDetails?.data || orderDetails);
-      setShowDetails(true);
-    } catch (err) {
-      setError('Failed to fetch order details');
-      console.error(err);
-    }
-  };
+  // const handleViewDetails = async (orderId) => {
+  //   try {
+  //     const orderDetails = await ordersApi.getById(orderId);
+  //     setSelectedOrder(orderDetails?.data || orderDetails);
+  //     setShowDetails(true);
+  //   } catch (err) {
+  //     setError('Failed to fetch order details');
+  //     console.error(err);
+  //   }
+  // };
 
   const getStatusColor = (status) => {
     switch (status?.toLowerCase()) {
@@ -99,7 +99,7 @@ const Orders = () => {
                 <th>Total</th>
                 <th>Status</th>
                 <th>Created At</th>
-                <th>Actions</th>
+                {/* <th>Actions</th> */}
               </tr>
             </thead>
             <tbody>
@@ -126,14 +126,14 @@ const Orders = () => {
                     </select>
                   </td>
                   <td>{order.created_at ? new Date(order.created_at).toLocaleString() : 'N/A'}</td>
-                  <td>
+                  {/* <td>
                     <button
                       className="btn-view"
                       onClick={() => handleViewDetails(order.id)}
                     >
                       View Details
                     </button>
-                  </td>
+                  </td> */}
                 </tr>
               ))}
             </tbody>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { storesApi } from '../services/api';
+import { storesApi, categoriesApi } from '../services/api';
 import './Stores.css';
 
 const initialForm = { 
@@ -13,6 +13,7 @@ const initialForm = {
 
 const Stores = () => {
   const [stores, setStores] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [form, setForm] = useState(initialForm);
@@ -22,7 +23,17 @@ const Stores = () => {
 
   useEffect(() => {
     fetchStores();
+    fetchCategories();
   }, []);
+
+  const fetchCategories = async () => {
+    try {
+      const response = await categoriesApi.getAll();
+      setCategories(Array.isArray(response) ? response : []);
+    } catch (err) {
+      console.error('Failed to fetch categories:', err);
+    }
+  };
 
   const fetchStores = async () => {
     try {
@@ -103,7 +114,20 @@ const Stores = () => {
           <input name="name" value={form.name} onChange={handleFormChange} placeholder="Store Name" required />
           <input name="description" value={form.description} onChange={handleFormChange} placeholder="Description" />
           <input name="image_url" value={form.image_url} onChange={handleFormChange} placeholder="Image URL" />
-          <input name="category_id" value={form.category_id} onChange={handleFormChange} placeholder="Category ID" />
+          <select 
+            name="category_id" 
+            value={form.category_id} 
+            onChange={handleFormChange}
+            required
+            className="category-select"
+          >
+            <option value="">Select a Category</option>
+            {categories.map(category => (
+              <option key={category.id} value={category.id}>
+                {category.name}
+              </option>
+            ))}
+          </select>
           <input 
             type="time" 
             name="opening_time" 
@@ -132,7 +156,7 @@ const Stores = () => {
                 <th>Name</th>
                 <th>Description</th>
                 <th>Image</th>
-                <th>Category ID</th>
+                <th>Category</th>
                 <th>Opening Time</th>
                 <th>Closing Time</th>
                 <th>Actions</th>
@@ -144,7 +168,9 @@ const Stores = () => {
                   <td>{store.name}</td>
                   <td>{store.description}</td>
                   <td>{store.image_url ? <img src={store.image_url} alt="store" style={{ width: 40, height: 40, objectFit: 'cover' }} /> : 'N/A'}</td>
-                  <td>{store.category_id || 'N/A'}</td>
+                  <td>
+                    {categories.find(cat => cat.id === store.category_id)?.name || 'N/A'}
+                  </td>
                   <td>{store.opening_time || 'N/A'}</td>
                   <td>{store.closing_time || 'N/A'}</td>
                   <td>

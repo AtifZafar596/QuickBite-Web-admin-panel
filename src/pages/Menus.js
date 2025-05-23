@@ -150,7 +150,7 @@ const Menus = () => {
                 <tr key={menu.id}>
                   <td>{menu.name}</td>
                   <td>{menu.description}</td>
-                  <td>dzd{menu.price?.toFixed ? menu.price.toFixed(2) : menu.price}</td>
+                  <td>AED{menu.price?.toFixed ? menu.price.toFixed(2) : menu.price}</td>
                   <td>{menu.image_url ? <img src={menu.image_url} alt="menu" style={{ width: 40, height: 40, objectFit: 'cover' }} /> : 'N/A'}</td>
                   <td>
                     <button className="btn-edit" onClick={() => handleEdit(menu)}>Edit</button>
