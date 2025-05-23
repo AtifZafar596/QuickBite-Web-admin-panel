@@ -2,7 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { storesApi } from '../services/api';
 import './Stores.css';
 
-const initialForm = { name: '', description: '', image_url: '', category_id: '' };
+const initialForm = { 
+  name: '', 
+  description: '', 
+  image_url: '', 
+  category_id: '',
+  opening_time: '',
+  closing_time: ''
+};
 
 const Stores = () => {
   const [stores, setStores] = useState([]);
@@ -42,6 +49,8 @@ const Stores = () => {
       description: store.description || '',
       image_url: store.image_url || '',
       category_id: store.category_id || '',
+      opening_time: store.opening_time || '',
+      closing_time: store.closing_time || '',
     });
     setShowForm(true);
   };
@@ -95,6 +104,20 @@ const Stores = () => {
           <input name="description" value={form.description} onChange={handleFormChange} placeholder="Description" />
           <input name="image_url" value={form.image_url} onChange={handleFormChange} placeholder="Image URL" />
           <input name="category_id" value={form.category_id} onChange={handleFormChange} placeholder="Category ID" />
+          <input 
+            type="time" 
+            name="opening_time" 
+            value={form.opening_time} 
+            onChange={handleFormChange} 
+            placeholder="Opening Time" 
+          />
+          <input 
+            type="time" 
+            name="closing_time" 
+            value={form.closing_time} 
+            onChange={handleFormChange} 
+            placeholder="Closing Time" 
+          />
           <button type="submit" className="btn-primary">{editingStore ? 'Update' : 'Create'}</button>
           <button type="button" className="btn-secondary" onClick={handleCancel}>Cancel</button>
         </form>
@@ -110,6 +133,8 @@ const Stores = () => {
                 <th>Description</th>
                 <th>Image</th>
                 <th>Category ID</th>
+                <th>Opening Time</th>
+                <th>Closing Time</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -120,6 +145,8 @@ const Stores = () => {
                   <td>{store.description}</td>
                   <td>{store.image_url ? <img src={store.image_url} alt="store" style={{ width: 40, height: 40, objectFit: 'cover' }} /> : 'N/A'}</td>
                   <td>{store.category_id || 'N/A'}</td>
+                  <td>{store.opening_time || 'N/A'}</td>
+                  <td>{store.closing_time || 'N/A'}</td>
                   <td>
                     <button className="btn-edit" onClick={() => handleEdit(store)}>Edit</button>
                     <button className="btn-delete" onClick={() => handleDelete(store.id)} disabled={deletingId === store.id}>
